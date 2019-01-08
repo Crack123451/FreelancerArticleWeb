@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище FreelancerArticleBaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Логин" />
+    </Key>
+    <Property Name="Логин" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Имя" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Фамилия" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Отчество" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="№ Кошелька" Type="nvarchar" MaxLength="9" Nullable="false" />
+    <Property Name="Пароль" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="№ Отклика" />
+    </Key>
+    <Property Name="№ Отклика" Type="int" Nullable="false" />
+    <Property Name="Фрилансер" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="№ Заказа" Type="int" />
+  </EntityType>
+  <EntityType Name="Freelancer">
+    <Key>
+      <PropertyRef Name="Логин" />
+    </Key>
+    <Property Name="Логин" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Имя" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Фамилия" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Отчество" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="№ Кошелька" Type="nvarchar" MaxLength="9" Nullable="false" />
+    <Property Name="Пароль" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Messenger">
+    <Key>
+      <PropertyRef Name="№ Мессенджера" />
+    </Key>
+    <Property Name="№ Мессенджера" Type="int" Nullable="false" />
+    <Property Name="Время" Type="datetime" Nullable="false" />
+    <Property Name="Логин пользователя" Type="nvarchar" MaxLength="20" />
+    <Property Name="Сообщение" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Moderator">
+    <Key>
+      <PropertyRef Name="Логин" />
+    </Key>
+    <Property Name="Логин" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Пароль" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="№ Заказа" />
+    </Key>
+    <Property Name="№ Заказа" Type="int" Nullable="false" />
+    <Property Name="Заказчик" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Тема" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Название" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Подробное описание" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Количество символов" Type="int" Nullable="false" />
+    <Property Name="Бюджет" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="Назначенный фрилансер" Type="nvarchar" MaxLength="20" />
+    <Property Name="Состояние" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Файл" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Reviews">
+    <Key>
+      <PropertyRef Name="№ Отзыва" />
+    </Key>
+    <Property Name="№ Отзыва" Type="int" Nullable="false" />
+    <Property Name="Фрилансер" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Комментарий" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Wallets">
+    <Key>
+      <PropertyRef Name="№ Кошелька" />
+    </Key>
+    <Property Name="№ Кошелька" Type="nvarchar" MaxLength="9" Nullable="false" />
+    <Property Name="Сумма" Type="numeric" Precision="9" Scale="2" />
+  </EntityType>
+  <Association Name="FK_Customer_ToWallets">
+    <End Role="Wallets" Type="Self.Wallets" Multiplicity="1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Wallets">
+        <PropertyRef Name="№ Кошелька" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="№ Кошелька" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Feedback_ToFreelancer">
+    <End Role="Freelancer" Type="Self.Freelancer" Multiplicity="1" />
+    <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Freelancer">
+        <PropertyRef Name="Логин" />
+      </Principal>
+      <Dependent Role="Feedback">
+        <PropertyRef Name="Фрилансер" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Feedback_ToOrder">
+    <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+    <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="№ Заказа" />
+      </Principal>
+      <Dependent Role="Feedback">
+        <PropertyRef Name="№ Заказа" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Freelancer_ToWallets">
+    <End Role="Wallets" Type="Self.Wallets" Multiplicity="1" />
+    <End Role="Freelancer" Type="Self.Freelancer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Wallets">
+        <PropertyRef Name="№ Кошелька" />
+      </Principal>
+      <Dependent Role="Freelancer">
+        <PropertyRef Name="№ Кошелька" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_ToCustomer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Логин" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Заказчик" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_ToFreelancer">
+    <End Role="Freelancer" Type="Self.Freelancer" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Freelancer">
+        <PropertyRef Name="Логин" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Назначенный фрилансер" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reviews_ToFreelancer">
+    <End Role="Freelancer" Type="Self.Freelancer" Multiplicity="1" />
+    <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Freelancer">
+        <PropertyRef Name="Логин" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="Фрилансер" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище FreelancerArticleBaseModelContainer">
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Freelancer" EntityType="Self.Freelancer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Messenger" EntityType="Self.Messenger" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Moderator" EntityType="Self.Moderator" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Wallets" EntityType="Self.Wallets" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Customer_ToWallets" Association="Self.FK_Customer_ToWallets">
+      <End Role="Wallets" EntitySet="Wallets" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Feedback_ToFreelancer" Association="Self.FK_Feedback_ToFreelancer">
+      <End Role="Freelancer" EntitySet="Freelancer" />
+      <End Role="Feedback" EntitySet="Feedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Feedback_ToOrder" Association="Self.FK_Feedback_ToOrder">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="Feedback" EntitySet="Feedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Freelancer_ToWallets" Association="Self.FK_Freelancer_ToWallets">
+      <End Role="Wallets" EntitySet="Wallets" />
+      <End Role="Freelancer" EntitySet="Freelancer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_ToCustomer" Association="Self.FK_Order_ToCustomer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_ToFreelancer" Association="Self.FK_Order_ToFreelancer">
+      <End Role="Freelancer" EntitySet="Freelancer" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reviews_ToFreelancer" Association="Self.FK_Reviews_ToFreelancer">
+      <End Role="Freelancer" EntitySet="Freelancer" />
+      <End Role="Reviews" EntitySet="Reviews" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

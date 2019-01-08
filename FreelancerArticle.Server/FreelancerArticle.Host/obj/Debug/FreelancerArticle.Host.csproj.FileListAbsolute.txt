@@ -1,0 +1,17 @@
+D:\SPBPU\Семестр 3\Стручков\FreelancerArticle\FreelancerArticle.Server\FreelancerArticle.Host\obj\Debug\FreelancerArticle.Host.csprojAssemblyReference.cache
+D:\SPBPU\Семестр 3\Стручков\FreelancerArticle\FreelancerArticle.Server\FreelancerArticle.Host\obj\Debug\FreelancerArticle.Host.csproj.CoreCompileInputs.cache
+D:\SPBPU\Семестр 3\Стручков\FreelancerArticle\FreelancerArticle.Server\FreelancerArticle.Host\bin\Debug\FreelancerArticle.Host.exe.config
+D:\SPBPU\Семестр 3\Стручков\FreelancerArticle\FreelancerArticle.Server\FreelancerArticle.Host\bin\Debug\FreelancerArticle.Host.exe
+D:\SPBPU\Семестр 3\Стручков\FreelancerArticle\FreelancerArticle.Server\FreelancerArticle.Host\bin\Debug\FreelancerArticle.Host.pdb
+D:\SPBPU\Семестр 3\Стручков\FreelancerArticle\FreelancerArticle.Server\FreelancerArticle.Host\bin\Debug\EntityFramework.dll
+D:\SPBPU\Семестр 3\Стручков\FreelancerArticle\FreelancerArticle.Server\FreelancerArticle.Host\bin\Debug\EntityFramework.SqlServer.dll
+D:\SPBPU\Семестр 3\Стручков\FreelancerArticle\FreelancerArticle.Server\FreelancerArticle.Host\bin\Debug\FreelancerArticle.Server.dll
+D:\SPBPU\Семестр 3\Стручков\FreelancerArticle\FreelancerArticle.Server\FreelancerArticle.Host\bin\Debug\FreelancerArticle.Server.pdb
+D:\SPBPU\Семестр 3\Стручков\FreelancerArticle\FreelancerArticle.Server\FreelancerArticle.Host\bin\Debug\FreelancerArticle.Server.dll.config
+D:\SPBPU\Семестр 3\Стручков\FreelancerArticle\FreelancerArticle.Server\FreelancerArticle.Host\bin\Debug\EntityFramework.xml
+D:\SPBPU\Семестр 3\Стручков\FreelancerArticle\FreelancerArticle.Server\FreelancerArticle.Host\bin\Debug\EntityFramework.SqlServer.xml
+D:\SPBPU\Семестр 3\Стручков\FreelancerArticle\FreelancerArticle.Server\FreelancerArticle.Host\bin\Debug\ru\EntityFramework.resources.dll
+D:\SPBPU\Семестр 3\Стручков\FreelancerArticle\FreelancerArticle.Server\FreelancerArticle.Host\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+D:\SPBPU\Семестр 3\Стручков\FreelancerArticle\FreelancerArticle.Server\FreelancerArticle.Host\obj\Debug\FreelancerArticle.Host.csproj.CopyComplete
+D:\SPBPU\Семестр 3\Стручков\FreelancerArticle\FreelancerArticle.Server\FreelancerArticle.Host\obj\Debug\FreelancerArticle.Host.exe
+D:\SPBPU\Семестр 3\Стручков\FreelancerArticle\FreelancerArticle.Server\FreelancerArticle.Host\obj\Debug\FreelancerArticle.Host.pdb

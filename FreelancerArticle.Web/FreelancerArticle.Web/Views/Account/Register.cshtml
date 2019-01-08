@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Регистрация";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model FreelancerArticle.Web.Models.RegisterViewModel
+
+<style>
+    input:read-only {
+        background-color: #ebebe4;
+    }
+</style>
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <h4>Создайте новую учетную запись</h4>
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    @Html.Label("Кто вы?")
+    <br>
+    <select name="role" style="width: 178.4px; height: 26px">
+        <option value="Freelancer">Фрилансер</option>
+        <option value="Customer">Заказчик</option>
+    </select>
+    <br><br>
+
+    @Html.LabelFor(m => m.Login)
+    <br>
+    @Html.TextBoxFor(m => m.Login)
+    <br><br>
+
+    @Html.LabelFor(m => m.Name)
+    <br>
+    @Html.TextBoxFor(m => m.Name)
+    <br><br>
+
+    @Html.LabelFor(m => m.LastName)
+    <br>
+    @Html.TextBoxFor(m => m.LastName)
+    <br><br>
+
+    @Html.LabelFor(m => m.Patronymic)
+    <br>
+    @Html.TextBoxFor(m => m.Patronymic)
+    <br><br>
+
+    @Html.Label("№ кошелька")
+    <br>
+    <input name="numberWallet" type="text" style="width: 178.4px; height: 26px" readonly />
+    <br><br>
+
+    @Html.LabelFor(m => m.Password)
+    <br>
+    @Html.PasswordFor(m => m.Password)
+    <br><br>
+
+    @Html.LabelFor(m => m.ConfirmPassword)
+    <br>
+    @Html.PasswordFor(m => m.ConfirmPassword)
+    <br><br>
+
+    <p><input type="submit" value="Регистрация" /></p>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var number = Math.floor(100000000 + Math.random() * 900000000);
+        $("input[name=numberWallet]").val(number);
+    });
+</script>
+
+

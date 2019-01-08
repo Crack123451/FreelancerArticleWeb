@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище FreelancerArticleBaseModelContainer" CdmEntityContainer="FreelancerArticleBaseEntities">
+    <EntitySetMapping Name="Customer">
+      <EntityTypeMapping TypeName="FreelancerArticleBaseModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Логин" ColumnName="Логин" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+          <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+          <ScalarProperty Name="C__Кошелька" ColumnName="№ Кошелька" />
+          <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Feedback">
+      <EntityTypeMapping TypeName="FreelancerArticleBaseModel.Feedback">
+        <MappingFragment StoreEntitySet="Feedback">
+          <ScalarProperty Name="C__Отклика" ColumnName="№ Отклика" />
+          <ScalarProperty Name="Фрилансер" ColumnName="Фрилансер" />
+          <ScalarProperty Name="C__Заказа" ColumnName="№ Заказа" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Freelancer">
+      <EntityTypeMapping TypeName="FreelancerArticleBaseModel.Freelancer">
+        <MappingFragment StoreEntitySet="Freelancer">
+          <ScalarProperty Name="Логин" ColumnName="Логин" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+          <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+          <ScalarProperty Name="C__Кошелька" ColumnName="№ Кошелька" />
+          <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messenger">
+      <EntityTypeMapping TypeName="FreelancerArticleBaseModel.Messenger">
+        <MappingFragment StoreEntitySet="Messenger">
+          <ScalarProperty Name="C__Мессенджера" ColumnName="№ Мессенджера" />
+          <ScalarProperty Name="Время" ColumnName="Время" />
+          <ScalarProperty Name="Логин_пользователя" ColumnName="Логин пользователя" />
+          <ScalarProperty Name="Сообщение" ColumnName="Сообщение" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Moderator">
+      <EntityTypeMapping TypeName="FreelancerArticleBaseModel.Moderator">
+        <MappingFragment StoreEntitySet="Moderator">
+          <ScalarProperty Name="Логин" ColumnName="Логин" />
+          <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order">
+      <EntityTypeMapping TypeName="FreelancerArticleBaseModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="C__Заказа" ColumnName="№ Заказа" />
+          <ScalarProperty Name="Заказчик" ColumnName="Заказчик" />
+          <ScalarProperty Name="Тема" ColumnName="Тема" />
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="Подробное_описание" ColumnName="Подробное описание" />
+          <ScalarProperty Name="Количество_символов" ColumnName="Количество символов" />
+          <ScalarProperty Name="Бюджет" ColumnName="Бюджет" />
+          <ScalarProperty Name="Назначенный_фрилансер" ColumnName="Назначенный фрилансер" />
+          <ScalarProperty Name="Состояние" ColumnName="Состояние" />
+          <ScalarProperty Name="Файл" ColumnName="Файл" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="FreelancerArticleBaseModel.Reviews">
+        <MappingFragment StoreEntitySet="Reviews">
+          <ScalarProperty Name="C__Отзыва" ColumnName="№ Отзыва" />
+          <ScalarProperty Name="Фрилансер" ColumnName="Фрилансер" />
+          <ScalarProperty Name="Комментарий" ColumnName="Комментарий" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Wallets">
+      <EntityTypeMapping TypeName="FreelancerArticleBaseModel.Wallets">
+        <MappingFragment StoreEntitySet="Wallets">
+          <ScalarProperty Name="C__Кошелька" ColumnName="№ Кошелька" />
+          <ScalarProperty Name="Сумма" ColumnName="Сумма" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

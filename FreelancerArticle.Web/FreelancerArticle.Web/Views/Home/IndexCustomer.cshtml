@@ -1,0 +1,432 @@
+﻿@{
+    ViewBag.Title = "Главная";
+}
+@using FreelancerArticle.Web.Helpers
+
+@Html.ValidationSummary("", new { @class = "text-danger" })
+<style>
+    p {
+        margin: 0px;
+        margin-top: 5px;
+    }
+
+    .hover_color {
+        background-color: #fefe88 !important;
+    }
+
+    .click_color {
+        background-color: #90ee90 !important;
+    }
+
+    button {
+        margin: 10px
+    }
+
+        button:disabled {
+            color: darkgrey;
+        }
+
+    input:read-only, textarea:read-only {
+        background-color: #ebebe4;
+    }
+
+    input, select {
+        margin-top: 5px;
+        margin-bottom: 5px
+    }
+</style>
+
+<div id="modalBoxCash" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Зачислить средства</h4>
+            </div>
+            @using (Html.BeginForm("UpdateCash", "Home", FormMethod.Post))
+            {
+                <div class="modal-body text-center">
+                    <p>Введите сумму:</p>
+                    <input id="textbox" name="cash" type="text" />
+                </div>
+                <div class="modal-footer">
+                    <button id="buttonSendCash" type="submit" class="btn btn-primary">Перевести</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div id="modalBoxViewReviews" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Отзывы</h4>
+            </div>
+            <div class="modal-body text-center">
+                <table id="tableReviews" class="table table-bordered">
+                    <tbody>
+                    </tbody>
+                </table>    
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">ОК</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalBoxInfoAboutFreelancer" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Подробнее о фрилансере</h4>
+            </div>
+            <div class="modal-body text-center">
+                <p>Логин:</p>
+                <input name="login" type="text" readonly />
+                <p>Имя:</p>
+                <input name="firstName" type="text" readonly />
+                <p>Фамилия:</p>
+                <input name="lastName" type="text" readonly />
+                <p>Отчество:</p>
+                <input name="patronymic" type="text" readonly />
+            </div>
+                <div class="modal-footer">
+                    <button id="buttonConfirmFreelancer" type="submit" class="btn btn-primary">Подтвердить фрилансера</button>
+                </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalBoxFormForWork" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Форма заказа</h4>
+            </div>
+            @using (Html.BeginForm("AddWork", "Home", FormMethod.Post))
+            {
+                <div class="modal-body text-center">
+                    <p>Тема:</p>
+                    <input name="topic" type="text" />
+                    <p>Название:</p>
+                    <input id="title" name="title" type="text" />
+                    <p>Подробное описание:</p>
+                    <textarea name="description" style="width: 100%; height: 200px; resize: none;" id="textbox"></textarea>
+                    <p>Кол-во символов:</p>
+                    <input name="countSymbols" type="text" />
+                    <p>Бюджет:</p>
+                    <input name="money" type="text" />
+                </div>
+                <div class="modal-footer">
+                    <button id="buttonPublish" type="submit" class="btn btn-primary">Опубликовать</button>
+                    <button id="buttonDownloadWork" type="button" class="btn btn-primary">Скачать выполненную работу</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div id="modalBoxWriteToModerator" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Написать модератору</h4>
+            </div>
+            @using (Html.BeginForm("SendMessage", "Home", FormMethod.Post))
+            {
+                <div class="modal-body text-center">
+                    <textarea name="message" style="width: 100%; height: 250px; resize: none;" id="textbox"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button id="buttonSendMessage" type="submit" class="btn btn-primary">Отправить сообщение</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div id="modalBoxReview" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Оставить отзыв</h4>
+            </div>
+            @using (Html.BeginForm("Review", "Home", FormMethod.Post))
+            {
+                <div class="modal-body text-center">
+                    <input type="hidden" name="freelancerName" />
+                    <textarea name="message" style="width: 100%; height: 250px; resize: none;" id="textbox"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button id="buttonSendReview" type="submit" class="btn btn-primary">Отправить</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" style="margin-top: 30px">
+    <div class="row">
+        <div class="col-md-4 text-left">
+            <h4>Информация о вас</h4>
+            <p>Логин:</p>
+            <input value="@ViewBag.User.Логин" disabled>
+            <p>Имя:</p>
+            <input value="@ViewBag.User.Имя" disabled>
+            <p>Фамилия:</p>
+            <input value="@ViewBag.User.Фамилия" disabled>
+            <p>Отчество:</p>
+            <input value="@ViewBag.User.Отчество" disabled>
+        </div>
+        <div class="col-md-4 text-center">
+            <h4>Отклики на заказ</h4>
+            <select id="feedbackList" name="myList" style="width: 200px; height: 26px"></select>
+            <br>
+            <button id="buttonViewReviews" disabled>Отзывы</button><br>
+            <button id="buttonInfoAboutFreelancer" disabled>Подробнее о фрилансере</button>
+        </div>
+        <div class="col-md-4 text-right">
+            <h4>Ваш кошелек</h4>
+            <p>Номер:</p>
+            <input value="@ViewBag.Wallet.C__Кошелька" disabled>
+            <p>Сумма:</p>
+            <input id="myWallet" value="@ViewBag.Wallet.Сумма" disabled>
+            <br>
+            <button id="buttonCash">Зачислить средства</button><br>
+            <button id="buttonConflict" disabled>Конфликт</button><br>
+            <button id="buttonWriteToModerator">Написать модератору</button>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" style="margin-top: 40px">
+    <div class="row">
+        <table id="tableOrders" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>№ Заказа</th>
+                    <th>Тема</th>
+                    <th>Название</th>
+                    <th>Кол-во символов</th>
+                    <th>Бюджет</th>
+                    <th>Назначенный фрилансер</th>
+                    <th>Состояние</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in ViewBag.Orders)
+                {
+                    <tr>
+                        <th>@order.C__Заказа</th>
+                        <th>@order.Тема</th>
+                        <th>@order.Название</th>
+                        <th>@order.Количество_символов</th>
+                        <th>@order.Бюджет</th>
+                        <th>@order.Назначенный_фрилансер</th>
+                        <th>@order.Состояние</th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="container-fluid" style="margin-top: 10px">
+    <div class="row text-right">
+        <button id="buttonReview" disabled>Оставить отзыв</button>
+        <button id="buttonСonfirmWork" disabled>Подтвердить работу</button>
+        <button id="buttonAddWork">Добавить</button>
+        <button id="buttonViewWork" disabled>Просмотр</button>
+        <button id="buttonDeleteWork" disabled>Удалить</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#tableOrders tbody tr").hover(function () {
+            $(this).addClass("hover_color")
+        }, function () {
+            $(this).removeClass("hover_color")
+        });
+
+        $("#tableOrders tbody tr").click(function (event) {
+            $("#tableOrders tbody tr").removeClass("click_color");
+            $(this).toggleClass("click_color");
+            var table = $(this)[0].children;
+            $("#buttonViewWork").prop('disabled', false);
+            $("#buttonViewReviews").prop('disabled', true);
+            $("#buttonInfoAboutFreelancer").prop('disabled', true);
+            if (table[6].innerText == "Фрилансер подтвержден"
+                || table[6].innerText == "Работа выполнена") {
+                $("#buttonConflict").prop('disabled', false);
+            }
+            else {
+                $("#buttonConflict").prop('disabled', true);
+            }
+            if (table[6].innerText == "Фрилансер подтвержден"
+                || table[6].innerText == "Работа выполнена"
+                || table[6].innerText == "Конфликт"
+                || table[6].innerText == "Работа подтверждена") {
+                $("#buttonReview").prop('disabled', false);
+                $("#buttonDeleteWork").prop('disabled', true);
+            }
+            else {
+                $("#buttonReview").prop('disabled', true);
+                $("#buttonDeleteWork").prop('disabled', false);
+            }
+            if (table[6].innerText == "Работа выполнена") {
+                $("#buttonСonfirmWork").prop('disabled', false);
+            }
+            else {
+                $("#buttonСonfirmWork").prop('disabled', true);
+            }
+            $("#feedbackList").find('option').remove();
+            if (table[6].innerText != "Фрилансер подтвержден"
+                && table[6].innerText != "Работа выполнена"
+                && table[6].innerText != "Конфликт"
+                && table[6].innerText != "Работа подтверждена") {
+                var currentElementTable = $("tr.click_color")[0].children[0].innerText;
+                $.post("@Url.Action("GetAllFeedback", "Home", null, Request.Url.Scheme)" + "?id=" + currentElementTable, function (data) {
+                    if (data.length > 0) {
+                        for (var i = 0; i < data.length; i++) {
+                            $('#feedbackList').append($('<option>', {
+                                value: data[i].Фрилансер,
+                                text: data[i].Фрилансер
+                            }));
+                        }
+                        $("#buttonViewReviews").prop('disabled', false);
+                        $("#buttonInfoAboutFreelancer").prop('disabled', false);
+                    }
+                });
+            }
+        });
+    });
+
+    $("#buttonCash").click(function (event) {
+        $("#modalBoxCash").modal('show');
+    });
+
+    $("#buttonWriteToModerator").click(function (event) {
+        $("#modalBoxWriteToModerator").modal('show');
+    });
+
+    $("#buttonAddWork").click(function (event) {
+        $("#modalBoxFormForWork input[name=topic]").val("");
+        $("#modalBoxFormForWork input[name=title]").val("");
+        $("#modalBoxFormForWork textarea[name=description]").val("");
+        $("#modalBoxFormForWork input[name=countSymbols]").val("");
+        $("#modalBoxFormForWork input[name=money]").val("");
+
+        $("input[name='topic']").prop('readonly', false);
+        $("input[name='title']").prop('readonly', false);
+        $("textarea[name='description']").prop('readonly', false);
+        $("input[name='countSymbols']").prop('readonly', false);
+        $("input[name='money']").prop('readonly', false);
+        $("#buttonPublish").prop('disabled', false);
+        $("#buttonDownloadWork").prop('disabled', true);
+        $("#modalBoxFormForWork").modal('show');
+    });
+
+    $("#buttonViewWork").click(function (event) {
+        var currentElementTable = $("tr.click_color")[0].children[0].innerText;
+        $.post("@Url.Action("FillViewWork", "Home", null, Request.Url.Scheme)" + "?id=" + currentElementTable, function (data) {
+            $("#modalBoxFormForWork input[name=topic]").val(data.topic);
+            $("#modalBoxFormForWork input[name=title]").val(data.title);
+            $("#modalBoxFormForWork textarea[name=description]").val(data.description);
+            $("#modalBoxFormForWork input[name=countSymbols]").val(data.countSymbols);
+            $("#modalBoxFormForWork input[name=money]").val(data.money);
+        });
+        $("input[name='topic']").prop('readonly', true);
+        $("input[name='title']").prop('readonly', true);
+        $("textarea[name='description']").prop('readonly', true);
+        $("input[name='countSymbols']").prop('readonly', true);
+        $("input[name='money']").prop('readonly', true);
+        $("#buttonPublish").prop('disabled', true);
+        $("#buttonDownloadWork").prop('disabled', false);
+        $("#modalBoxFormForWork").modal('show');
+    });
+
+    $("#buttonDeleteWork").click(function (event) {
+        if (confirm("Вы точно хотите удалить выделенный заказ?")) {
+            var currentElementTable = $("tr.click_color")[0].children[0].innerText;
+            $.get("@Url.Action("DeleteWork", "Home", null, Request.Url.Scheme)", { id: currentElementTable });
+            location.reload();
+        }
+    });
+
+    $("#buttonConflict").click(function (event) {
+        if (confirm("Вы готовы объявить конфликт?\nПосле этого вам будет необходимо написать модератору свои притензии. Модератор рассмотрит ваш вопрос в течение 3 суток.")) {
+            var currentElementTable = $("tr.click_color")[0].children[0].innerText;
+            $.get("@Url.Action("Conflict", "Home", null, Request.Url.Scheme)", { id: currentElementTable });
+            location.reload();
+        }
+    });
+
+    $("#buttonСonfirmWork").click(function (event) {
+        if (confirm("Вы точно готовы подтвердить выполненную работу?")) {
+            var currentElementTable = $("tr.click_color")[0].children[0].innerText;
+            var currentElementTable_freelancer = $("tr.click_color")[0].children[5].innerText;
+            var currentElementTable_money = $("tr.click_color")[0].children[4].innerText;
+            $.get("@Url.Action("СonfirmWork", "Home", null, Request.Url.Scheme)", { id: currentElementTable, freelancer: currentElementTable_freelancer, money: currentElementTable_money });
+            location.reload();
+        }
+    });
+
+    $("#buttonReview").click(function (event) {
+        var currentElementTable_Freelancer = $("tr.click_color")[0].children[5].innerText;
+        $("input[name=freelancerName]").val(currentElementTable_Freelancer);
+        $("#modalBoxReview").modal('show');
+    });
+
+    $("#buttonDownloadWork").click(function (event) {
+        var currentElementTable = $("tr.click_color")[0].children[0].innerText;
+        $.get("@Url.Action("DownloadWork", "Home", null, Request.Url.Scheme)" + "?id=" + currentElementTable, function (data) {
+            if (data.length > 0)
+                alert("Ссылка на файл:\n" + data)
+            else
+                alert("Работа не выполнена");
+        });
+    });
+
+    $("#buttonViewReviews").click(function (event) {
+        var freelancer = $('#feedbackList option:selected').val();
+        if (freelancer.length > 0) {
+            $("#tableReviews tbody").empty();
+            $.post("@Url.Action("GetAllReviews", "Home", null, Request.Url.Scheme)" + "?freelancer=" + freelancer, function (data) {
+                if (data.length > 0) {            
+                    for (var i = 0; i < data.length; i++) {
+                        $("#tableReviews tbody").append("<tr><th>" + data[i] + "</th></tr>");
+                    }
+                }
+            });
+            $("#modalBoxViewReviews").modal('show');
+        }
+    });
+
+    $("#buttonInfoAboutFreelancer").click(function (event) {
+        var freelancer = $('#feedbackList option:selected').val();
+        if (freelancer.length > 0) {
+            $.post("@Url.Action("GetInfoAboutFreelancer", "Home", null, Request.Url.Scheme)" + "?freelancer=" + freelancer, function (data) {
+                $("#modalBoxInfoAboutFreelancer input[name=login]").val(data.Логин);
+                $("#modalBoxInfoAboutFreelancer input[name=firstName]").val(data.Имя);
+                $("#modalBoxInfoAboutFreelancer input[name=lastName]").val(data.Фамилия);
+                $("#modalBoxInfoAboutFreelancer input[name=patronymic]").val(data.Отчество);
+            });
+            $("#modalBoxInfoAboutFreelancer").modal('show');
+        }
+    });
+
+    $("#buttonConfirmFreelancer").click(function (event) {
+        var freelancer = $('#feedbackList option:selected').val();
+        var currentElementTable = $("tr.click_color")[0].children[0].innerText;
+        if (freelancer.length > 0) {
+            $.get("@Url.Action("ConfirmFreelancer", "Home", null, Request.Url.Scheme)", { id: currentElementTable, loginFreelancer: freelancer });
+            location.reload();
+        }
+    });
+</script>

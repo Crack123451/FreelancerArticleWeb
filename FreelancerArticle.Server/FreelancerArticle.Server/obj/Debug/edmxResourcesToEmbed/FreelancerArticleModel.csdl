@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FreelancerArticleBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Логин" />
+    </Key>
+    <Property Name="Логин" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C__Кошелька" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Пароль" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Wallets" Relationship="Self.FK_Customer_ToWallets" FromRole="Customer" ToRole="Wallets" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_Order_ToCustomer" FromRole="Customer" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="C__Отклика" />
+    </Key>
+    <Property Name="C__Отклика" Type="Int32" Nullable="false" />
+    <Property Name="Фрилансер" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C__Заказа" Type="Int32" />
+    <NavigationProperty Name="Freelancer" Relationship="Self.FK_Feedback_ToFreelancer" FromRole="Feedback" ToRole="Freelancer" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_Feedback_ToOrder" FromRole="Feedback" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Freelancer">
+    <Key>
+      <PropertyRef Name="Логин" />
+    </Key>
+    <Property Name="Логин" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C__Кошелька" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Пароль" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Feedback" Relationship="Self.FK_Feedback_ToFreelancer" FromRole="Freelancer" ToRole="Feedback" />
+    <NavigationProperty Name="Wallets" Relationship="Self.FK_Freelancer_ToWallets" FromRole="Freelancer" ToRole="Wallets" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_Order_ToFreelancer" FromRole="Freelancer" ToRole="Order" />
+    <NavigationProperty Name="Reviews" Relationship="Self.FK_Reviews_ToFreelancer" FromRole="Freelancer" ToRole="Reviews" />
+  </EntityType>
+  <EntityType Name="Messenger">
+    <Key>
+      <PropertyRef Name="C__Мессенджера" />
+    </Key>
+    <Property Name="C__Мессенджера" Type="Int32" Nullable="false" />
+    <Property Name="Время" Type="DateTime" Precision="3" />
+    <Property Name="Логин_пользователя" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Сообщение" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Moderator" Relationship="Self.FK_Moderator_ToMessenger" FromRole="Messenger" ToRole="Moderator" />
+  </EntityType>
+  <EntityType Name="Moderator">
+    <Key>
+      <PropertyRef Name="Логин" />
+    </Key>
+    <Property Name="Логин" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Пароль" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="C__Мессенджера" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Messenger" Relationship="Self.FK_Moderator_ToMessenger" FromRole="Moderator" ToRole="Messenger" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="C__Заказа" />
+    </Key>
+    <Property Name="C__Заказа" Type="Int32" Nullable="false" />
+    <Property Name="Заказчик" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Тема" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Подробное_описание" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Количество_символов" Type="Int32" Nullable="false" />
+    <Property Name="Бюджет" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="Назначенный_фрилансер" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Состояние" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Файл" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_Order_ToCustomer" FromRole="Order" ToRole="Customer" />
+    <NavigationProperty Name="Feedback" Relationship="Self.FK_Feedback_ToOrder" FromRole="Order" ToRole="Feedback" />
+    <NavigationProperty Name="Freelancer" Relationship="Self.FK_Order_ToFreelancer" FromRole="Order" ToRole="Freelancer" />
+  </EntityType>
+  <EntityType Name="Reviews">
+    <Key>
+      <PropertyRef Name="C__Отзыва" />
+    </Key>
+    <Property Name="C__Отзыва" Type="Int32" Nullable="false" />
+    <Property Name="Фрилансер" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Комментарий" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Freelancer" Relationship="Self.FK_Reviews_ToFreelancer" FromRole="Reviews" ToRole="Freelancer" />
+  </EntityType>
+  <EntityType Name="Wallets">
+    <Key>
+      <PropertyRef Name="C__Кошелька" />
+    </Key>
+    <Property Name="C__Кошелька" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Сумма" Type="Decimal" Precision="9" Scale="2" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_Customer_ToWallets" FromRole="Wallets" ToRole="Customer" />
+    <NavigationProperty Name="Freelancer" Relationship="Self.FK_Freelancer_ToWallets" FromRole="Wallets" ToRole="Freelancer" />
+  </EntityType>
+  <Association Name="FK_Customer_ToWallets">
+    <End Role="Wallets" Type="Self.Wallets" Multiplicity="1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Wallets">
+        <PropertyRef Name="C__Кошелька" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="C__Кошелька" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_ToCustomer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Логин" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Заказчик" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Feedback_ToFreelancer">
+    <End Role="Freelancer" Type="Self.Freelancer" Multiplicity="1" />
+    <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Freelancer">
+        <PropertyRef Name="Логин" />
+      </Principal>
+      <Dependent Role="Feedback">
+        <PropertyRef Name="Фрилансер" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Feedback_ToOrder">
+    <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+    <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="C__Заказа" />
+      </Principal>
+      <Dependent Role="Feedback">
+        <PropertyRef Name="C__Заказа" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Freelancer_ToWallets">
+    <End Role="Wallets" Type="Self.Wallets" Multiplicity="1" />
+    <End Role="Freelancer" Type="Self.Freelancer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Wallets">
+        <PropertyRef Name="C__Кошелька" />
+      </Principal>
+      <Dependent Role="Freelancer">
+        <PropertyRef Name="C__Кошелька" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_ToFreelancer">
+    <End Role="Freelancer" Type="Self.Freelancer" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Freelancer">
+        <PropertyRef Name="Логин" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Назначенный_фрилансер" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reviews_ToFreelancer">
+    <End Role="Freelancer" Type="Self.Freelancer" Multiplicity="1" />
+    <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Freelancer">
+        <PropertyRef Name="Логин" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="Фрилансер" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Moderator_ToMessenger">
+    <End Role="Messenger" Type="Self.Messenger" Multiplicity="1" />
+    <End Role="Moderator" Type="Self.Moderator" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Messenger">
+        <PropertyRef Name="C__Мессенджера" />
+      </Principal>
+      <Dependent Role="Moderator">
+        <PropertyRef Name="C__Мессенджера" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FreelancerArticleBaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customer" EntityType="Self.Customer" />
+    <EntitySet Name="Feedback" EntityType="Self.Feedback" />
+    <EntitySet Name="Freelancer" EntityType="Self.Freelancer" />
+    <EntitySet Name="Messenger" EntityType="Self.Messenger" />
+    <EntitySet Name="Moderator" EntityType="Self.Moderator" />
+    <EntitySet Name="Order" EntityType="Self.Order" />
+    <EntitySet Name="Reviews" EntityType="Self.Reviews" />
+    <EntitySet Name="Wallets" EntityType="Self.Wallets" />
+    <AssociationSet Name="FK_Customer_ToWallets" Association="Self.FK_Customer_ToWallets">
+      <End Role="Wallets" EntitySet="Wallets" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_ToCustomer" Association="Self.FK_Order_ToCustomer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Feedback_ToFreelancer" Association="Self.FK_Feedback_ToFreelancer">
+      <End Role="Freelancer" EntitySet="Freelancer" />
+      <End Role="Feedback" EntitySet="Feedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Feedback_ToOrder" Association="Self.FK_Feedback_ToOrder">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="Feedback" EntitySet="Feedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Freelancer_ToWallets" Association="Self.FK_Freelancer_ToWallets">
+      <End Role="Wallets" EntitySet="Wallets" />
+      <End Role="Freelancer" EntitySet="Freelancer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_ToFreelancer" Association="Self.FK_Order_ToFreelancer">
+      <End Role="Freelancer" EntitySet="Freelancer" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reviews_ToFreelancer" Association="Self.FK_Reviews_ToFreelancer">
+      <End Role="Freelancer" EntitySet="Freelancer" />
+      <End Role="Reviews" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Moderator_ToMessenger" Association="Self.FK_Moderator_ToMessenger">
+      <End Role="Messenger" EntitySet="Messenger" />
+      <End Role="Moderator" EntitySet="Moderator" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

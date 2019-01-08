@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/FreelancerArticle.Server" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/FreelancerArticle.Server" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfFreelancer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Freelancer" nillable="true" type="tns:Freelancer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFreelancer" nillable="true" type="tns:ArrayOfFreelancer" />
+  <xs:complexType name="Freelancer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="C__Кошелька" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Feedback" nillable="true" type="tns:ArrayOfFeedback" />
+      <xs:element minOccurs="0" name="Order" nillable="true" type="tns:ArrayOfOrder" />
+      <xs:element minOccurs="0" name="Reviews" nillable="true" type="tns:ArrayOfReviews" />
+      <xs:element minOccurs="0" name="Wallets" nillable="true" type="tns:Wallets" />
+      <xs:element minOccurs="0" name="Имя" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Логин" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Отчество" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Пароль" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Фамилия" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Freelancer" nillable="true" type="tns:Freelancer" />
+  <xs:complexType name="ArrayOfFeedback">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Feedback" nillable="true" type="tns:Feedback" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFeedback" nillable="true" type="tns:ArrayOfFeedback" />
+  <xs:complexType name="Feedback">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="C__Заказа" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="C__Отклика" type="xs:int" />
+      <xs:element minOccurs="0" name="Freelancer" nillable="true" type="tns:Freelancer" />
+      <xs:element minOccurs="0" name="Order" nillable="true" type="tns:Order" />
+      <xs:element minOccurs="0" name="Фрилансер" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Feedback" nillable="true" type="tns:Feedback" />
+  <xs:complexType name="Order">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="C__Заказа" type="xs:int" />
+      <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
+      <xs:element minOccurs="0" name="Feedback" nillable="true" type="tns:ArrayOfFeedback" />
+      <xs:element minOccurs="0" name="Freelancer" nillable="true" type="tns:Freelancer" />
+      <xs:element minOccurs="0" name="Бюджет" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Заказчик" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Количество_символов" type="xs:int" />
+      <xs:element minOccurs="0" name="Название" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Назначенный_фрилансер" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Подробное_описание" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Состояние" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Тема" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Файл" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Order" nillable="true" type="tns:Order" />
+  <xs:complexType name="Customer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="C__Кошелька" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Order" nillable="true" type="tns:ArrayOfOrder" />
+      <xs:element minOccurs="0" name="Wallets" nillable="true" type="tns:Wallets" />
+      <xs:element minOccurs="0" name="Имя" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Логин" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Отчество" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Пароль" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Фамилия" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Customer" nillable="true" type="tns:Customer" />
+  <xs:complexType name="ArrayOfOrder">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Order" nillable="true" type="tns:Order" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrder" nillable="true" type="tns:ArrayOfOrder" />
+  <xs:complexType name="Wallets">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="C__Кошелька" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:ArrayOfCustomer" />
+      <xs:element minOccurs="0" name="Freelancer" nillable="true" type="tns:ArrayOfFreelancer" />
+      <xs:element minOccurs="0" name="Сумма" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Wallets" nillable="true" type="tns:Wallets" />
+  <xs:complexType name="ArrayOfCustomer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Customer" nillable="true" type="tns:Customer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCustomer" nillable="true" type="tns:ArrayOfCustomer" />
+  <xs:complexType name="ArrayOfReviews">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Reviews" nillable="true" type="tns:Reviews" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReviews" nillable="true" type="tns:ArrayOfReviews" />
+  <xs:complexType name="Reviews">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="C__Отзыва" type="xs:int" />
+      <xs:element minOccurs="0" name="Freelancer" nillable="true" type="tns:Freelancer" />
+      <xs:element minOccurs="0" name="Комментарий" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Фрилансер" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Reviews" nillable="true" type="tns:Reviews" />
+  <xs:complexType name="ArrayOfMessenger">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Messenger" nillable="true" type="tns:Messenger" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMessenger" nillable="true" type="tns:ArrayOfMessenger" />
+  <xs:complexType name="Messenger">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="C__Мессенджера" type="xs:int" />
+      <xs:element minOccurs="0" name="Время" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Логин_пользователя" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Сообщение" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Messenger" nillable="true" type="tns:Messenger" />
+  <xs:complexType name="ArrayOfWallets">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Wallets" nillable="true" type="tns:Wallets" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWallets" nillable="true" type="tns:ArrayOfWallets" />
+</xs:schema>

@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="FreelancerArticleService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/FreelancerArticle.Server" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IUserService_AddUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_AddUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_CheckUserLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckUserLogin" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_CheckUserLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckUserLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetRoleUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoleUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetRoleUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoleUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_CheckUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_CheckUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetListFreelancers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListFreelancers" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetListFreelancers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListFreelancersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetListCustomers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListCustomers" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetListCustomers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListCustomersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeedbackService_AddFeedback_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddFeedback" />
+  </wsdl:message>
+  <wsdl:message name="IFeedbackService_AddFeedback_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddFeedbackResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeedbackService_GetListFeedbacks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListFeedbacks" />
+  </wsdl:message>
+  <wsdl:message name="IFeedbackService_GetListFeedbacks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListFeedbacksResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeedbackService_DeleteAllFeedback_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAllFeedback" />
+  </wsdl:message>
+  <wsdl:message name="IFeedbackService_DeleteAllFeedback_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAllFeedbackResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMessengerService_AddMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddMessage" />
+  </wsdl:message>
+  <wsdl:message name="IMessengerService_AddMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMessengerService_GetListMessages_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListMessages" />
+  </wsdl:message>
+  <wsdl:message name="IMessengerService_GetListMessages_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListMessagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_AddOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddOrder" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_AddOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_DeleteOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteOrder" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_DeleteOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_UpdateStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateStatus" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_UpdateStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetListOrders_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListOrders" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetListOrders_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListOrdersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_SendFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendFile" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_SendFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_AssignFreelancer_InputMessage">
+    <wsdl:part name="parameters" element="tns:AssignFreelancer" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_AssignFreelancer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AssignFreelancerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReviewService_AddComment_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddComment" />
+  </wsdl:message>
+  <wsdl:message name="IReviewService_AddComment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCommentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReviewService_GetListReviews_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListReviews" />
+  </wsdl:message>
+  <wsdl:message name="IReviewService_GetListReviews_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListReviewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWalletService_AddWallet_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddWallet" />
+  </wsdl:message>
+  <wsdl:message name="IWalletService_AddWallet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddWalletResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWalletService_UpdateMoneyInWallet_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMoneyInWallet" />
+  </wsdl:message>
+  <wsdl:message name="IWalletService_UpdateMoneyInWallet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMoneyInWalletResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWalletService_GetListWallets_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListWallets" />
+  </wsdl:message>
+  <wsdl:message name="IWalletService_GetListWallets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListWalletsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IUserService">
+    <wsdl:operation name="AddUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/AddUser" message="tns:IUserService_AddUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/AddUserResponse" message="tns:IUserService_AddUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/CheckUserLogin" message="tns:IUserService_CheckUserLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/CheckUserLoginResponse" message="tns:IUserService_CheckUserLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoleUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetRoleUser" message="tns:IUserService_GetRoleUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetRoleUserResponse" message="tns:IUserService_GetRoleUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/CheckUser" message="tns:IUserService_CheckUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/CheckUserResponse" message="tns:IUserService_CheckUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListFreelancers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetListFreelancers" message="tns:IUserService_GetListFreelancers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetListFreelancersResponse" message="tns:IUserService_GetListFreelancers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListCustomers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetListCustomers" message="tns:IUserService_GetListCustomers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetListCustomersResponse" message="tns:IUserService_GetListCustomers_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IFeedbackService">
+    <wsdl:operation name="AddFeedback">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeedbackService/AddFeedback" message="tns:IFeedbackService_AddFeedback_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeedbackService/AddFeedbackResponse" message="tns:IFeedbackService_AddFeedback_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListFeedbacks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeedbackService/GetListFeedbacks" message="tns:IFeedbackService_GetListFeedbacks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeedbackService/GetListFeedbacksResponse" message="tns:IFeedbackService_GetListFeedbacks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllFeedback">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeedbackService/DeleteAllFeedback" message="tns:IFeedbackService_DeleteAllFeedback_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeedbackService/DeleteAllFeedbackResponse" message="tns:IFeedbackService_DeleteAllFeedback_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IMessengerService">
+    <wsdl:operation name="AddMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMessengerService/AddMessage" message="tns:IMessengerService_AddMessage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMessengerService/AddMessageResponse" message="tns:IMessengerService_AddMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListMessages">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMessengerService/GetListMessages" message="tns:IMessengerService_GetListMessages_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMessengerService/GetListMessagesResponse" message="tns:IMessengerService_GetListMessages_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IOrderService">
+    <wsdl:operation name="AddOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/AddOrder" message="tns:IOrderService_AddOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/AddOrderResponse" message="tns:IOrderService_AddOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/DeleteOrder" message="tns:IOrderService_DeleteOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/DeleteOrderResponse" message="tns:IOrderService_DeleteOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/UpdateStatus" message="tns:IOrderService_UpdateStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/UpdateStatusResponse" message="tns:IOrderService_UpdateStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListOrders">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetListOrders" message="tns:IOrderService_GetListOrders_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/GetListOrdersResponse" message="tns:IOrderService_GetListOrders_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/SendFile" message="tns:IOrderService_SendFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/SendFileResponse" message="tns:IOrderService_SendFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AssignFreelancer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/AssignFreelancer" message="tns:IOrderService_AssignFreelancer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/AssignFreelancerResponse" message="tns:IOrderService_AssignFreelancer_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IReviewService">
+    <wsdl:operation name="AddComment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReviewService/AddComment" message="tns:IReviewService_AddComment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReviewService/AddCommentResponse" message="tns:IReviewService_AddComment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListReviews">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReviewService/GetListReviews" message="tns:IReviewService_GetListReviews_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReviewService/GetListReviewsResponse" message="tns:IReviewService_GetListReviews_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IWalletService">
+    <wsdl:operation name="AddWallet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWalletService/AddWallet" message="tns:IWalletService_AddWallet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWalletService/AddWalletResponse" message="tns:IWalletService_AddWallet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMoneyInWallet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWalletService/UpdateMoneyInWallet" message="tns:IWalletService_UpdateMoneyInWallet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWalletService/UpdateMoneyInWalletResponse" message="tns:IWalletService_UpdateMoneyInWallet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListWallets">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWalletService/GetListWallets" message="tns:IWalletService_GetListWallets_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWalletService/GetListWalletsResponse" message="tns:IWalletService_GetListWallets_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IUserService" type="tns:IUserService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddUser">
+      <soap:operation soapAction="http://tempuri.org/IUserService/AddUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserLogin">
+      <soap:operation soapAction="http://tempuri.org/IUserService/CheckUserLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoleUser">
+      <soap:operation soapAction="http://tempuri.org/IUserService/GetRoleUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUser">
+      <soap:operation soapAction="http://tempuri.org/IUserService/CheckUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListFreelancers">
+      <soap:operation soapAction="http://tempuri.org/IUserService/GetListFreelancers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListCustomers">
+      <soap:operation soapAction="http://tempuri.org/IUserService/GetListCustomers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IFeedbackService" type="tns:IFeedbackService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddFeedback">
+      <soap:operation soapAction="http://tempuri.org/IFeedbackService/AddFeedback" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListFeedbacks">
+      <soap:operation soapAction="http://tempuri.org/IFeedbackService/GetListFeedbacks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllFeedback">
+      <soap:operation soapAction="http://tempuri.org/IFeedbackService/DeleteAllFeedback" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IMessengerService" type="tns:IMessengerService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddMessage">
+      <soap:operation soapAction="http://tempuri.org/IMessengerService/AddMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListMessages">
+      <soap:operation soapAction="http://tempuri.org/IMessengerService/GetListMessages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IOrderService" type="tns:IOrderService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddOrder">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/AddOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOrder">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/DeleteOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStatus">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/UpdateStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListOrders">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/GetListOrders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendFile">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/SendFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssignFreelancer">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/AssignFreelancer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IReviewService" type="tns:IReviewService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddComment">
+      <soap:operation soapAction="http://tempuri.org/IReviewService/AddComment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListReviews">
+      <soap:operation soapAction="http://tempuri.org/IReviewService/GetListReviews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IWalletService" type="tns:IWalletService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddWallet">
+      <soap:operation soapAction="http://tempuri.org/IWalletService/AddWallet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMoneyInWallet">
+      <soap:operation soapAction="http://tempuri.org/IWalletService/UpdateMoneyInWallet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListWallets">
+      <soap:operation soapAction="http://tempuri.org/IWalletService/GetListWallets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FreelancerArticleService">
+    <wsdl:port name="BasicHttpBinding_IUserService" binding="tns:BasicHttpBinding_IUserService">
+      <soap:address location="http://localhost:8080/Service" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IFeedbackService" binding="tns:BasicHttpBinding_IFeedbackService">
+      <soap:address location="http://localhost:8080/Service" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IMessengerService" binding="tns:BasicHttpBinding_IMessengerService">
+      <soap:address location="http://localhost:8080/Service" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IOrderService" binding="tns:BasicHttpBinding_IOrderService">
+      <soap:address location="http://localhost:8080/Service" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IReviewService" binding="tns:BasicHttpBinding_IReviewService">
+      <soap:address location="http://localhost:8080/Service" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IWalletService" binding="tns:BasicHttpBinding_IWalletService">
+      <soap:address location="http://localhost:8080/Service" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
